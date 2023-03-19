@@ -16,7 +16,7 @@ def kfpipeline():
 
     # Fetch the data
     ingest = funcs['fetch_data'].as_step(
-        inputs={'dataset': 'v3io:///projects/clone-test-shapira/artifacts/cancer-dataset.parquets'},
+        inputs={'dataset': 'store://artifacts/clone-test-shapira/cancer-dataset#0:1e93a7b6-6bbd-4c37-aa5a-c276ff10f49a'},
         outputs=['dataset'])
 
     # Train the model
