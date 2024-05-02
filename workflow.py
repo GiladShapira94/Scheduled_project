@@ -16,7 +16,7 @@ def kfpipeline(dataset):
 
     # Fetch the data
     ingest = funcs['fetch_data'].as_step(
-        inputs={'dataset': dataset,
+        inputs={'dataset': dataset},
         outputs=['dataset'])
 
     # Train the model
