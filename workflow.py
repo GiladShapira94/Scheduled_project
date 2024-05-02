@@ -12,11 +12,11 @@ def init_functions(functions: dict, project=None, secrets=None):
         f.apply(auto_mount())
 
 
-def kfpipeline():
+def kfpipeline(dataset):
 
     # Fetch the data
     ingest = funcs['fetch_data'].as_step(
-        inputs={'dataset': 'store://artifacts/clone-test-shapira/cancer-dataset#0:1e93a7b6-6bbd-4c37-aa5a-c276ff10f49a'},
+        inputs={'dataset': dataset,
         outputs=['dataset'])
 
     # Train the model
