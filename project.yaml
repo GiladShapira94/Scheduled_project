@@ -8,7 +8,7 @@ spec:
     kind: job
     image: mlrun/mlrun
     handler: fetch_data
-  - url: ./trainier1.py
+  - url: ./trainier.py
     name: trainer
     kind: job
     image: mlrun/mlrun
