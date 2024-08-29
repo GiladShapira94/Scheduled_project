@@ -4,26 +4,21 @@ import os
 import sys
 import mlrun
 
-funcs = {}
 
-# init functions is used to configure function resources and local settings
-def init_functions(functions: dict, project=None, secrets=None):
-    for f in functions.values():
-        f.apply(auto_mount())
 
 
 def kfpipeline(dataset):
 
     # Fetch the data
-    ingest = funcs['fetch_data'].as_step(
+    ingest = mlrun.run_function('fetch_data',
         inputs={'dataset': dataset},
         outputs=['dataset'])
 
-    # Train the model
-    train = funcs["trainer"].as_step(
-        inputs={"dataset": ingest.outputs['dataset']},
-        outputs=['model'])
+    # # Train the model
+    # train = funcs["trainer"].as_step(
+    #     inputs={"dataset": ingest.outputs['dataset']},
+    #     outputs=['model'])
 
 
-    # Deploy the model
-    deploy = funcs["serving"].deploy_step(models=[{'key':'cancer-classifier','model_path':train.outputs["model"], 'class_name':'mlrun.frameworks.sklearn.SklearnModelServer'}])
+    # # Deploy the model
+    # deploy = funcs["serving"].deploy_step(models=[{'key':'cancer-classifier','model_path':train.outputs["model"], 'class_name':'mlrun.frameworks.sklearn.SklearnModelServer'}])
