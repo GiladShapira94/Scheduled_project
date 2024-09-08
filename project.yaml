@@ -32,3 +32,5 @@ spec:
   source: git://github.com/GiladShapira94/Scheduled_project.git#refs/heads/master
   origin_url: git://github.com/GiladShapira94/Scheduled_project.git#refs/heads/master
   desired_state: online
+  default_function_node_selector:
+    kubernetes.io/hostname: k8s-node1
